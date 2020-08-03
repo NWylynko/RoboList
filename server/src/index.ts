@@ -1,9 +1,15 @@
 import 'source-map-support/register'
-import express from "express";
+import express from 'express';
+import http from 'http';
+import WebSocket from 'ws';
 import bodyParser from 'body-parser';
 import cors from 'cors'
 import Joi from 'joi';
 const app = express();
+//initialize a simple http server
+const server = http.createServer(app);
+//initialize the WebSocket server instance
+const wss = new WebSocket.Server({ server });
 const port = 8080;
 
 const schema = Joi.object({
@@ -16,8 +22,12 @@ app.use(bodyParser.json())
 
 let data: any = {}
 
+wss.on('connection', client => {
+  client.send(JSON.stringify(data))
+});
+
 app.get("/", (req, res) => {
-  res.send(data)
+  res.json(data)
 });
 
 app.post("/",(req, res) => {
@@ -29,13 +39,15 @@ app.post("/",(req, res) => {
     }
     const { id, ip } = result.value;
     data[id] = {id, ip}
+    wss.clients.forEach(client => client.send(JSON.stringify(data)));
     res.send('success')
+    
   } catch (error) {
     res.send(error)
   }
   
 });
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`listening at http://localhost:${port}`);
 });
