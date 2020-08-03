@@ -1,0 +1,8 @@
+{
+  "short_name": "Robots List",
+  "name": "List of Robots on the network",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
