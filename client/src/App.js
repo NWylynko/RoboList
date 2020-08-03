@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 function App() {
 
-  const [list, setList] = useState([])
+  const [list, setList] = useState()
 
   useEffect(() => {
     fetch(`http://${window.location.hostname}:8080`)
@@ -19,7 +19,7 @@ function App() {
   return (
     <div>
       <h2>Robots</h2>
-      {list.map(Robot)}
+      {list ? list.map(Robot) : <p>loading...</p>}
     </div>
   );
 }
