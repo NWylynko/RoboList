@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "0.0.1",
+  "description": "central server to collect list of robots accessable over the network",
+  "main": "src/index.ts",
+  "repository": "https://github.com/NWylynko/RoboList",
+  "author": "Nick Wylynko",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./build/index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "source-map-support": "^0.5.19"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.7",
+    "@types/node": "^14.0.27",
+    "typescript": "^3.9.7"
+  }
+}
