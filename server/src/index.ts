@@ -23,8 +23,11 @@ app.get("/", (req, res) => {
 app.post("/",(req, res) => {
   console.log(req.body)
   try {
-    // const { id, ip } : Joi.ValidationResult<any> = schema.validate(req.body);
-    const { id, ip } = req.body;
+    const result = schema.validate(req.body);
+    if (result.error) {
+      throw new Error(result.error.details[0].message)
+    }
+    const { id, ip } = result.value;
     data[id] = {id, ip}
     res.send('success')
   } catch (error) {
