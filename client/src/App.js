@@ -27,10 +27,11 @@ function App() {
   );
 }
 
-function Robot({ id, ip }) {
+function Robot({ id, ip, hostname }) {
   return (
     <div key={id} style={{ display: 'flex', flexDirection: 'row' }}>
       <span role="img" aria-label="robot">🤖</span>
+      <p>{hostname}</p>
       <p>local ip:</p>
       <a href={'ssh://pi@' + ip}>{ip}</a>
       <p>MAC: {id}</p>

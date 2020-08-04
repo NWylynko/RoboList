@@ -14,7 +14,8 @@ const port = 8080;
 
 const schema = Joi.object({
   id: Joi.string().required(),
-  ip: Joi.string().required()
+  ip: Joi.string().required(),
+  hostname: Joi.string().required()
 })
 
 app.use(cors())
@@ -37,8 +38,7 @@ app.post("/",(req, res) => {
     if (result.error) {
       throw new Error(result.error.details[0].message)
     }
-    const { id, ip } = result.value;
-    data[id] = {id, ip}
+    data[result.value.id] = result.value
     wss.clients.forEach(client => client.send(JSON.stringify(data)));
     res.send('success')
     
