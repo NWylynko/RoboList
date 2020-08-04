@@ -1,4 +1,24 @@
+html {
+  --background: #141414;
+  --text: #EFEFEF;
+  --accent1: #F03A47;
+  --accent2: #276FBF;
+
+  background-color: var(--background);
+}
+
+body {
+  margin: 2vw;
+}
+
+@font-face {
+  font-family: 'NunitoSans';
+  src: local('NunitoSans'), url(./fonts/NunitoSans-Regular.ttf) format('truetype');
+}
+
 p, h1, h2, h3, h4, h5, h6, a {
   margin: 4px;
   padding: 4px;
+  color: var(--text);
+  font-family: 'NunitoSans';
 }
