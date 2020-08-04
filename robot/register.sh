@@ -17,8 +17,9 @@ fi
 # so if other ones need to be used
 # eg. wifi0, lan0, en0
 # change all the wlan0 in the script - not just this one
-if [$(ifconfig wlan0) == '']
+if [$(ifconfig | grep wlan0) == '']
 then
+	echo wlan0 interface not found
 	exit;
 fi
 
