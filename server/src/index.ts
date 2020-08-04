@@ -43,7 +43,8 @@ app.post("/",(req, res) => {
     res.send('success')
     
   } catch (error) {
-    res.send(error)
+    console.error(error.message)
+    res.send(error.message)
   }
   
 });
