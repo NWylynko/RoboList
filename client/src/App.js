@@ -35,7 +35,7 @@ function App() {
 
 function Robot({ id, ip, hostname, timestamp }) {
   return (
-    <div key={id} style={{ display: 'inline-flex', flexDirection: 'column', border: '2px solid var(--accent1)', borderRadius: 5, padding: 5, margin: 5, width: 'fit-content' }}>
+    <div key={id} style={{ display: 'inline-flex', flexDirection: 'column', border: '2px solid var(--accent1)', borderRadius: 5, padding: 5, margin: 5, width: 'fit-content', minWidth: 400 }}>
       <div className="row">
         <p>{hostname}</p>
         <Interval delay={1000}>
