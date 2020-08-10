@@ -1,13 +1,4 @@
-
-# checks if a .env file exists
-if [ -f .env ]
-then
-	echo .env detected
-	export $(cat .env | xargs) # reads the .env file in
-else
-	echo .env not detected
-	exit;
-fi
+SERVER="http://roboserver.local:8080"
 
 # checks to see if wlan0 network interface is present
 # raspberrypis use wlan0 for the wifi but other devices
