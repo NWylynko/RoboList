@@ -38,7 +38,7 @@ app.post("/",(req, res) => {
     if (result.error) {
       throw new Error(result.error.details[0].message)
     }
-    data[result.value.id] = result.value
+    data[result.value.id] = {...result.value, timestamp: Date.now()}
     wss.clients.forEach(client => client.send(JSON.stringify(data)));
     res.send('success')
     
