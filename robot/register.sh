@@ -29,6 +29,7 @@ fi
 ID=$(/sbin/ifconfig wlan0 | grep ether | awk '{ print $2 }')
 # use "inet " instead of just "inet" to remove any inet6 because we just want the ipv4
 IP=$(/sbin/ifconfig wlan0 | grep "inet " | awk '{ print $2 }')
+HOSTNAME=$(/bin/hostname)
 
 echo Server: $SERVER
 echo Mac: $ID
