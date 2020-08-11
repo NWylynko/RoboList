@@ -10,7 +10,7 @@ SERVER="http://roboserver.local:8080"
 # so if other ones need to be used
 # eg. wifi0, lan0, en0
 # change all the wlan0 in the script - not just this one
-if [$(/sbin/ifconfig | grep wlan0) == '']
+if [[ "$(/sbin/ifconfig | grep wlan0)" == '' ]]
 then
 	echo wlan0 interface not found
 	exit;
@@ -29,6 +29,13 @@ fi
 ID=$(/sbin/ifconfig wlan0 | grep ether | awk '{ print $2 }')
 # use "inet " instead of just "inet" to remove any inet6 because we just want the ipv4
 IP=$(/sbin/ifconfig wlan0 | grep "inet " | awk '{ print $2 }')
+
+if [[ "$IP" == '' ]]
+then
+	echo no IP, not connected to wifi
+	exit;
+fi
+
 HOSTNAME=$(/bin/hostname)
 
 echo Server: $SERVER
@@ -39,7 +46,7 @@ echo hostname: $HOSTNAME
 # shell doesnt support json
 # each item is
 # "item":"'$variable'"
-# with a comma unbetween each
+# with a comma between each
 # and {} brackets at the start and end
 # needs to have '' around it as it is sent as a string
 BODY='{"id":"'$ID'","ip":"'$IP'","hostname":"'$HOSTNAME'"}'
