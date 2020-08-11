@@ -56,7 +56,7 @@ function Robot({ id, ip, hostname, timestamp }) {
 }
 
 function RobotLink({ scheme, ip }) {
-  return <a href={`${scheme}://pi@${ip}`} style={{ margin: 0, padding: 0, color: 'var(--accent2)' }} target="_blank" rel="noopener noreferrer">{scheme.toUpperCase()}</a>
+  return <a href={`${scheme}://pi@${ip}`} style={{ margin: 0, padding: 0, color: 'var(--accent2)' }}>{scheme.toUpperCase()}</a>
 }
 
 export default App;
