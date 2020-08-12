@@ -1,4 +1,9 @@
 git pull
-sudo pm2 stop ecosystem.config.js
-sudo pm2 delete ecosystem.config.js
-./deploy.sh
+cd client
+yarn
+yarn build
+cd ../server
+yarn
+yarn build
+cd ..
+sudo pm2 restart ecosystem.config.js
