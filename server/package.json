@@ -1,7 +1,7 @@
 {
   "name": "server",
-  "version": "0.0.1",
-  "description": "central server to collect list of robots accessable over the network",
+  "version": "1.0.0",
+  "description": "central server to collect list of robots accessible over the network",
   "main": "src/index.ts",
   "repository": "https://github.com/NWylynko/RoboList",
   "author": "Nick Wylynko",
