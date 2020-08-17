@@ -1,4 +1,4 @@
-SERVER="http://roboserver.local:8080"
+SERVER="http://192.168.1.5:8080"
 
 # /sbin/ifconfig needs to be used when the script is run through crontab for whatever reason
 
